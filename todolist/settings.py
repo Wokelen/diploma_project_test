@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'core',
     'goals',
+    'bot',
     'social_django',
     'django_filters',
     'corsheaders',
@@ -58,8 +59,7 @@ ROOT_URLCONF = 'todolist.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,7 +69,6 @@ TEMPLATES = [
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
             ],
         },
     },
@@ -123,13 +122,13 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend'
 )
 AUTH_USER_MODEL = 'core.User'
+
 SOCIAL_AUTH_JSONFIELD_ENABLED = True
 SOCIAL_AUTH_VK_SCOPE = ['email']
-SOCIAL_AUTH_VK_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_VK_OAUTH2_KEY')
-SOCIAL_AUTH_VK_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_VK_OAUTH2_SECRET')
+SOCIAL_AUTH_VK_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_VK_OAUTH2_KEY')
+SOCIAL_AUTH_VK_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_VK_OAUTH2_SECRET')
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/categories/'
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/logged-in/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/categories'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
 SOCIAL_AUTH_USER_MODEL = 'core.User'
 
@@ -159,4 +158,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "django_media")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
