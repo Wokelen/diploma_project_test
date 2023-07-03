@@ -84,7 +84,7 @@ class Migration(migrations.Migration):
                 (
                     "goal",
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, to="goals.goal"
+                        on_delete=django.db.models.deletion.CASCADE, to="test_goals.goal"
                     ),
                 ),
                 (
@@ -138,7 +138,7 @@ class Migration(migrations.Migration):
             model_name="goal",
             name="category",
             field=models.ForeignKey(
-                on_delete=django.db.models.deletion.PROTECT, to="goals.goalcategory"
+                on_delete=django.db.models.deletion.PROTECT, to="test_goals.goalcategory"
             ),
         ),
         migrations.AddField(

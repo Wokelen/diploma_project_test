@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ("goals", "0001_initial"),
+        ("test_goals", "0001_initial"),
     ]
 
     operations = [
@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
                 null=True,
                 on_delete=django.db.models.deletion.PROTECT,
                 related_name="categories",
-                to="goals.board",
+                to="test_goals.board",
             ),
         ),
         migrations.CreateModel(
@@ -80,7 +80,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.PROTECT,
                         related_name="participants",
-                        to="goals.board",
+                        to="test_goals.board",
                         verbose_name="Доска",
                     ),
                 ),

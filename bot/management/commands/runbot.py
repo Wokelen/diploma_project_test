@@ -44,7 +44,7 @@ class Command(BaseCommand):
 
     def handle_authorized_user(self, tg_user: TgUser, msg: Message):
         if msg.text.startswith('/'):
-            if msg.text == '/goals':
+            if msg.text == '/test_goals':
                 self.handle_goals_command(tg_user, msg)
             elif msg.text == '/create':
                 self.handle_create_command(tg_user, msg)
@@ -60,9 +60,9 @@ class Command(BaseCommand):
         goals = Goal.objects.exclude(status=Goal.Status.archived).filter(user=tg_user.user)
 
         if goals:
-            text = 'Your goals:\n' + '\n'.join([f'{goal.id}) {goal.title}' for goal in goals])
+            text = 'Your test_goals:\n' + '\n'.join([f'{goal.id}) {goal.title}' for goal in goals])
         else:
-            text = "You don't have goals"
+            text = "You don't have test_goals"
         self.tg_client.send_message(tg_user.chat_id, text)
 
     def handle_create_command(self, tg_user: TgUser, msg: Message):

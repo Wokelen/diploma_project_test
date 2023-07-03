@@ -7,6 +7,11 @@ class Board(BaseModel):
     title = models.CharField(verbose_name="Название", max_length=255)
     is_deleted = models.BooleanField(verbose_name="Удалена", default=False)
 
+    class Meta:
+        app_label = 'todolist.settings'
+        verbose_name: str = "Доска"
+        verbose_name_plural: str = "Доски"
+
     def __str__(self):
         return self.title
 
